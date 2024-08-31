@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALARM CLOCK</title>
+    <link rel="shortcut icon" href="static/alarmclocklogo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body>
+    <div class="cantainer">
+        <div class="main">
+            <center>
+                <div id="time"></div>
+                <form action="/" method="POST">
+                    <input id="input1" type="number" name="hours" placeholder="hours" required>
+                    <input id="input2" type="number" name="minet" placeholder="minites" required>
+                    <select id="amorpm" name="ap">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                    <input id="play" type="submit" value="set alarm">
+                    <input id="stop" type="button" value=" stop the alarm">
+
+                </form>
+
+            </center>
+        </div>
+
+
+
+    </div>
+    <div class="box">
+        <div class="table">
+            <table>
+                <thead>
+                    <th>sno</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                </thead>
+                {% for allalarm in allalarm %}
+                <tbody>
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{allalarm.time}}</td>
+
+                        <td>
+                            <button class="action-btn" data-time="{{allalarm.time}}">Active</button>
+                            <a href="delete/{{allalarm.sno}}"><button class="action-btn">Delete</button></a>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+        </div>
+
+
+    </div>
+    <script src="static/clock.js"></script>
+</body>
+
+</html>
